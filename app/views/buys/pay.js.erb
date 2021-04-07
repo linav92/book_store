@@ -1,0 +1,31 @@
+function displayTimer (miliseconds) {
+  let end = miliseconds / 1000 ;
+  let min = $("#minutes")[0];
+  let sec = $("#seconds")[0];
+  if (end > 0 ) {
+    let ticker = setInterval( function (){
+    end--;
+    if (end <= 0 ) { 
+      clearInterval(ticker); 
+      disablePay(); }
+    let secs = end;
+    let mins = Math.floor(secs / 60 ); 
+    secs -= mins * 60 ;
+    min.innerHTML = ( "00" + mins).slice( -2 );
+    sec.innerHTML = ( "00" + secs).slice( -2 );
+    }, 1000);
+  }
+}
+
+function disablePay() {
+  $(".pay").prop('disabled', true);
+  $.ajax({
+    url: "<%= unbook_path(@book) %>", 
+    type: "POST",
+    dataType: 'script',
+    data: { book: "<%= @book %>"}
+  });
+};
+
+displayTimer(120000)
+$("#show").html("<%= escape_javascript ( render partial: 'show')%>")

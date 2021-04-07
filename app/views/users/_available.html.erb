@@ -1,0 +1,12 @@
+<% @books.each do |book| %>
+  <%if book.status == 'available' %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.status %></td>
+      
+        <td><%= link_to 'Show', book, remote: true %></td>
+        <td><%= link_to 'Reserve', status_path(book), method: :post, remote: true %></td>
+      </tr>
+  <% end %>
+<% end %>

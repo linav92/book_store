@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Books</h1>
+
+<div id="book_show"></div>
+<div>
+  <h2>Request a book</h2>
+  <span>The books requested have a 24-hour time to be available in our store</span>
+  <div></div><%= render 'form', book: @book %>
+</div>
+
+
+<br>
+<table class = "table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id='bookList'>
+     <%= render 'index' %>
+  </tbody>
+</table>

@@ -1,0 +1,13 @@
+<% @books.each do |book| %>
+  <%if book.status == 'payed' %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.status %></td>
+      
+        <td><%= link_to 'Show', book, remote: true %></td>
+        <td><%= link_to 'Remove', remove_path(book), method: :patch, remote: true %></td>
+        <!-- <td><%= link_to 'Destroy', reserve_path(book), method: :put, remote: true%></td> -->
+      </tr>
+  <% end %>
+<% end %>
